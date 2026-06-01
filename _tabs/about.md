@@ -1,13 +1,13 @@
-<!-- ---
+---
 # the default layout is 'page'
 icon: fas fa-info-circle
 order: 4
----  -->
----
+---  
+<!-- ---
 title: About
 icon: fas fa-user
 order: 4
----
+--- -->
 
 # 👋 你好，我是 lsqkzmys
 
@@ -19,7 +19,7 @@ order: 4
 - 记录从入门到进阶的成长过程
 
 ## 🛠️ 技术栈
-- 编程语言：Python / Bash / Go
+- 编程语言：Python / Bash 
 - 安全领域：Web 安全、内网渗透、CTF
 - 工具：Burp Suite、Metasploit、Nmap
 
