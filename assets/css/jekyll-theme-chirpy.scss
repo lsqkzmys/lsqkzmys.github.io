@@ -2,13 +2,11 @@
 ---
 
 /* prettier-ignore */
-@use 'main
-{%- if jekyll.environment == 'production' -%}
-  .bundle
-{%- endif -%}
-';
+@use 'main' {%- if jekyll.environment == 'production' -%}.bundle{%- endif -%};
 
-/* append your custom style below */
+/* 在这里追加你的自定义样式 */
 #sidebar {
-      background-color: red !important;
-    }
+  background-color: red !important;
+}
+
+/* 其他你想加的样式写在下面 */
