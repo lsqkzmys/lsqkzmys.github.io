@@ -4,10 +4,13 @@
 /* prettier-ignore */
 @use 'main' {%- if jekyll.environment == 'production' -%}.bundle{%- endif -%};
 
-/* ==================== 在这里追加你的自定义样式 ==================== */
+/* ==================== 你的自定义样式写在这里 ==================== */
 
 #sidebar {
   background-color: red !important;
 }
 
-/* 其他样式继续往下写 */
+/* 示例：加宽文章内容区域 */
+#main-wrapper > .container {
+  max-width: 1200px;
+}
