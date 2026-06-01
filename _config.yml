@@ -16,7 +16,7 @@ timezone:
 
 title: chen # the main title
 
-tagline: 在网安知识海洋里，一边溺水一边求生的鱼 # it will display as the subtitle
+tagline: 溺水的鱼想要呼吸 # it will display as the subtitle
 
 description: >- # used by seo meta and the atom feed
   A minimal, responsive and feature-rich Jekyll theme for technical writing.
