@@ -1,3 +1,22 @@
-#sidebar {
-  background: #2d3436;
+/* ========== 侧边栏背景 - 终极适配版 ========== */
+/* 1. 强制覆盖所有默认样式，关闭半透明遮罩 */
+body #sidebar {
+  /* 背景图 + 半透明遮罩，让文字更清晰 */
+  background-image: linear-gradient(rgba(0,0,0,0.15), rgba(0,0,0,0.15)), url('/assets/img/test.jpg') !important;
+  
+  /* 关键适配属性，缺一不可 */
+  background-size: cover !important;
+  background-position: center top !important;
+  background-repeat: no-repeat !important;
+  background-attachment: fixed !important;
+  
+  /* 强制关闭主题默认的半透明背景 */
+  background-color: transparent !important;
+}
+
+/* 2. 提升侧边栏文字的可读性（防止背景太亮看不清字） */
+#sidebar .nav-item, 
+#sidebar .profile-avatar, 
+#sidebar .contact {
+  text-shadow: 0 0 4px rgba(0,0,0,0.6) !important;
 }
