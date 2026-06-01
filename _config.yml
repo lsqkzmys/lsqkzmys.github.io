@@ -16,14 +16,14 @@ timezone:
 
 title: chen # the main title
 
-tagline: 在网安知识的海洋里，一边溺水一边适应的鱼 # it will display as the subtitle
+tagline: 在网安知识海洋里，一边溺水一边求生的鱼 # it will display as the subtitle
 
 description: >- # used by seo meta and the atom feed
   A minimal, responsive and feature-rich Jekyll theme for technical writing.
 
 # Fill in the protocol & hostname for your site.
 # E.g. 'https://username.github.io', note that it does not end with a '/'.
-url: "https://lsqkzmys.github.io/"
+url: "https://lsqkzmys.github.io"
 
 github:
   username: lsqkzmys # change to your GitHub username
