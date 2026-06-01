@@ -4,9 +4,10 @@
 /* prettier-ignore */
 @use 'main' {%- if jekyll.environment == 'production' -%}.bundle{%- endif -%};
 
-/* 在这里追加你的自定义样式 */
+/* ==================== 在这里追加你的自定义样式 ==================== */
+
 #sidebar {
   background-color: red !important;
 }
 
-/* 其他你想加的样式写在下面 */
+/* 其他样式继续往下写 */
