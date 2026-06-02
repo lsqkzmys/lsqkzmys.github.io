@@ -4,81 +4,125 @@
 @import 'main';
 
 /* ==================== 你的自定义样式写在这里 ==================== */
-// 1. 全局基础优化
+// ===================== 全局变量定义 =====================
 :root {
-  --sidebar-width: 260px;
-  --main-bg-color: #f8f9fa;
-  --card-bg-color: #ffffff;
-  --text-color: #333;
-  --primary-color: #4285f4;
-  --hover-color: #3367d6;
-  --border-radius: 12px;
-  --box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  --primary: #6366f1; /* 主色调：柔和靛蓝 */
+  --primary-light: #818cf8;
+  --primary-dark: #4f46e5;
+  --accent: #ec4899;   /* 辅助色：粉紫渐变 */
+  --bg-main: #fafafa;
+  --bg-card: rgba(255, 255, 255, 0.75);
+  --text-main: #1f2937;
+  --text-secondary: #6b7280;
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.1);
+  --radius: 16px;
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* 深色模式自动适配 */
 @media (prefers-color-scheme: dark) {
   :root {
-    --main-bg-color: #1a1a1a;
-    --card-bg-color: #2d2d2d;
-    --text-color: #e0e0e0;
-    --box-shadow: 0 2px 12px rgba(0,0,0,0.2);
+    --bg-main: #0f172a;
+    --bg-card: rgba(30, 41, 59, 0.75);
+    --text-main: #e2e8f0;
+    --text-secondary: #94a3b8;
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.2);
+    --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.25);
+    --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.3);
   }
 }
 
-body {
-  background-color: var(--main-bg-color);
-  color: var(--text-color);
-  font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-  line-height: 1.65;
+// ===================== 全局基础样式 =====================
+* {
+  box-sizing: border-box;
 }
 
-// 2. 侧边栏美化
+body {
+  background-color: var(--bg-main);
+  color: var(--text-main);
+  font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+  line-height: 1.7;
+  transition: var(--transition);
+}
+
+// ===================== 侧边栏美化（毛玻璃效果） =====================
 #sidebar {
-  background: var(--card-bg-color);
-  box-shadow: var(--box-shadow);
-  border-right: 1px solid rgba(0,0,0,0.05);
+  background: var(--bg-card);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-right: 1px solid rgba(0, 0, 0, 0.05);
+  box-shadow: var(--shadow-md);
+  z-index: 10;
 }
 
 @media (prefers-color-scheme: dark) {
   #sidebar {
-    border-right-color: rgba(255,255,255,0.05);
+    border-right-color: rgba(255, 255, 255, 0.05);
   }
 }
 
+/* 头像样式升级 */
 .sidebar-header .avatar {
   border-radius: 50%;
-  border: 3px solid var(--primary-color);
-  box-shadow: 0 0 10px rgba(66, 133, 244, 0.3);
+  border: 3px solid transparent;
+  background: linear-gradient(var(--bg-card), var(--bg-card)) padding-box,
+              linear-gradient(135deg, var(--primary), var(--accent)) border-box;
+  box-shadow: 0 0 16px rgba(99, 102, 241, 0.3);
+  transition: var(--transition);
+}
+
+.sidebar-header .avatar:hover {
+  transform: scale(1.05) rotate(2deg);
+  box-shadow: 0 0 24px rgba(99, 102, 241, 0.5);
 }
 
 .sidebar-header .site-title {
-  font-size: 1.8rem;
+  font-size: 2rem;
   font-weight: 700;
-  color: var(--primary-color);
+  background: linear-gradient(135deg, var(--primary), var(--accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .sidebar-header .site-desc {
-  color: #888;
-  font-size: 0.95rem;
+  color: var(--text-secondary);
+  font-size: 1rem;
+  margin-top: 4px;
 }
 
+/* 导航栏动效 */
 .nav-item {
-  margin: 4px 0;
-  border-radius: 8px;
-  transition: all 0.25s ease;
+  margin: 6px 12px;
+  border-radius: 12px;
+  padding: 12px 16px;
+  transition: var(--transition);
+  color: var(--text-secondary);
 }
 
-.nav-item.active {
-  background: linear-gradient(90deg, var(--primary-color), #673ab7);
-  color: white;
-  box-shadow: 0 2px 8px rgba(66, 133, 244, 0.3);
+.nav-item i {
+  transition: var(--transition);
 }
 
 .nav-item:hover:not(.active) {
-  background-color: rgba(66, 133, 244, 0.1);
+  background: rgba(99, 102, 241, 0.1);
+  color: var(--primary);
+  transform: translateX(4px);
 }
 
-// 3. 主内容区优化
+.nav-item.active {
+  background: linear-gradient(135deg, var(--primary), var(--primary-light));
+  color: white;
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+}
+
+.nav-item.active i {
+  transform: scale(1.1);
+}
+
+// ===================== 主内容区美化 =====================
 #main-wrapper {
   padding: 2rem 3rem;
 }
@@ -90,68 +134,131 @@ body {
 }
 
 .main-content {
-  background: var(--card-bg-color);
-  border-radius: var(--border-radius);
-  padding: 2rem;
-  box-shadow: var(--box-shadow);
+  background: var(--bg-card);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: var(--radius);
+  padding: 2.5rem;
+  box-shadow: var(--shadow-md);
+  border: 1px solid rgba(0, 0, 0, 0.05);
 }
 
-// 4. 搜索框美化
+@media (prefers-color-scheme: dark) {
+  .main-content {
+    border-color: rgba(255, 255, 255, 0.05);
+  }
+}
+
+// ===================== 搜索框美化 =====================
 .search-input {
-  border-radius: 20px;
-  border: 1px solid #eee;
-  padding: 8px 16px 8px 36px;
-  background: var(--card-bg-color);
-  transition: all 0.25s ease;
+  border-radius: 24px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  background: var(--bg-card);
+  backdrop-filter: blur(8px);
+  padding: 10px 18px 10px 40px;
+  color: var(--text-main);
+  transition: var(--transition);
+  box-shadow: var(--shadow-sm);
 }
 
 .search-input:focus {
-  border-color: var(--primary-color);
-  box-shadow: 0 0 0 3px rgba(66, 133, 244, 0.2);
+  border-color: var(--primary);
+  box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.15);
   outline: none;
+  transform: scale(1.02);
 }
 
-// 5. 页脚美化
+@media (prefers-color-scheme: dark) {
+  .search-input {
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+}
+
+// ===================== 文章卡片动效 =====================
+.post-preview {
+  background: var(--bg-card);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: var(--radius);
+  padding: 2rem;
+  margin-bottom: 1.5rem;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+
+.post-preview::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: linear-gradient(180deg, var(--primary), var(--accent));
+  opacity: 0;
+  transition: var(--transition);
+}
+
+.post-preview:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-lg);
+}
+
+.post-preview:hover::before {
+  opacity: 1;
+}
+
+.post-title {
+  color: var(--text-main);
+  font-weight: 600;
+  font-size: 1.5rem;
+  transition: var(--transition);
+}
+
+.post-title:hover {
+  color: var(--primary);
+  transform: translateX(4px);
+}
+
+.post-meta {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  margin-top: 8px;
+}
+
+// ===================== 页脚美化 =====================
 .footer {
-  margin-top: 3rem;
-  padding-top: 1.5rem;
-  border-top: 1px solid rgba(0,0,0,0.05);
-  color: #999;
+  margin-top: 4rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+  color: var(--text-secondary);
   font-size: 0.9rem;
+  text-align: center;
 }
 
 @media (prefers-color-scheme: dark) {
   .footer {
-    border-top-color: rgba(255,255,255,0.05);
+    border-top-color: rgba(255, 255, 255, 0.05);
   }
 }
 
-// 6. 卡片/文章项美化（适配 Chirpy 的文章列表）
-.post-preview {
-  background: var(--card-bg-color);
-  border-radius: var(--border-radius);
-  padding: 1.5rem;
-  margin-bottom: 1.5rem;
-  box-shadow: var(--box-shadow);
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+// ===================== 滚动条美化 =====================
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
 }
 
-.post-preview:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+::-webkit-scrollbar-track {
+  background: var(--bg-main);
 }
 
-.post-title {
-  color: var(--primary-color);
-  font-weight: 600;
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--primary), var(--primary-light));
+  border-radius: 4px;
 }
 
-// 7. 深色模式适配
-@media (prefers-color-scheme: dark) {
-  .search-input {
-    border-color: #3a3a3a;
-    background: #2d2d2d;
-    color: #e0e0e0;
-  }
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, var(--primary-dark), var(--primary));
 }
-
