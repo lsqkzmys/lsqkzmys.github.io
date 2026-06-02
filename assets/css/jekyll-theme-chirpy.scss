@@ -3,36 +3,33 @@
 
 @import 'main';
 
-/* ==================== 背景图片 + 透明度 ==================== */
+/* ==================== 背景图片 + 高透明度 ==================== */
 body {
   background: url('/assets/img/avatar.jpg') no-repeat center center fixed !important;
   background-size: cover !important;
   background-color: #e0e7f0 !important;
 }
 
-/* 增加透明度，让背景图更明显 */
+/* 主要区域增加透明度，让背景图透出来 */
 #main-wrapper,
 #sidebar,
 .panel-wrapper,
-.access {
-  background: rgba(255, 255, 255, 0.75) !important;
-  backdrop-filter: blur(16px) !important;
+.access,
+.row {
+  background: rgba(255, 255, 255, 0.72) !important;
+  backdrop-filter: blur(18px) !important;
 }
 
 /* ==================== 侧边栏清理 ==================== */
-/* 移除黑点 */
 .sidebar .nav-list li,
-.sidebar nav li,
 .nav-list li,
 nav li {
   list-style: none !important;
 }
 
 .sidebar .nav-list li::before,
-.sidebar nav li::before,
 .nav-list li::before,
-nav li::before,
-.nav-list li::marker {
+nav li::before {
   display: none !important;
 }
 
@@ -42,41 +39,42 @@ nav li::before,
   display: none !important;
 }
 
-/* ==================== Recently Updated & Trending Tags 移动 ==================== */
+/* ==================== Recently Updated 移动到右侧 ==================== */
 #access-lastmod,
 section#access-lastmod {
   position: fixed !important;
-  right: 30px !important;
-  top: 140px !important;
+  right: 25px !important;
+  top: 130px !important;
   width: 320px !important;
-  background: rgba(255, 255, 255, 0.88) !important;
+  z-index: 9999 !important;
+  background: rgba(255, 255, 255, 0.9) !important;
   border-radius: 18px !important;
-  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.18) !important;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2) !important;
   padding: 20px !important;
-  z-index: 999 !important;
-  backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px) !important;
 }
 
-/* Trending Tags */
+/* ==================== Trending Tags 移动到右侧 ==================== */
+section:has(h2:contains("Trending Tags")),
 .trending-tags,
-section.trending-tags,
-.widget.trending-tags {
+.widget.trending-tags,
+.access > section:not(#access-lastmod) {
   position: fixed !important;
-  right: 30px !important;
-  top: 420px !important;
+  right: 25px !important;
+  top: 410px !important;
   width: 320px !important;
-  background: rgba(255, 255, 255, 0.88) !important;
+  z-index: 9999 !important;
+  background: rgba(255, 255, 255, 0.9) !important;
   border-radius: 18px !important;
-  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.18) !important;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2) !important;
   padding: 20px !important;
-  z-index: 999 !important;
-  backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px) !important;
 }
 
 /* ==================== 社交图标横排 ==================== */
-.sidebar-bottom .social-links,
-.sidebar-bottom .links,
-.social-links {
+.sidebar-bottom,
+.sidebar-bottom.d-flex,
+.sidebar-bottom .d-flex {
   display: flex !important;
   flex-direction: row !important;
   justify-content: center !important;
@@ -84,29 +82,22 @@ section.trending-tags,
   flex-wrap: wrap !important;
 }
 
-.sidebar-bottom .social-links li,
-.social-links li {
+.sidebar-bottom a,
+.social-links a {
   margin: 0 !important;
-  padding: 0 !important;
 }
 
 /* ==================== 动态效果 ==================== */
-.post-preview {
-  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
-  border-radius: 16px;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1) !important;
-}
-
 .post-preview:hover {
-  transform: translateY(-10px) scale(1.03);
-  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.18) !important;
+  transform: translateY(-12px) scale(1.03) !important;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2) !important;
 }
 
 a:hover {
-  transform: translateX(4px);
+  transform: translateX(5px) !important;
 }
 
 /* 加宽内容 */
 #main-wrapper > .container {
-  max-width: 1200px !important;
+  max-width: 1220px !important;
 }
