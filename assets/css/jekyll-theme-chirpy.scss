@@ -3,15 +3,15 @@
 
 @import 'main';
 
-/* ==================== 清新明亮风格 + 彻底移除黑点 ==================== */
+/* ==================== 清新明亮 + 指定修改 ==================== */
 
-/* 1. 彻底移除侧边栏右侧透明光条 */
+/* 1. 彻底移除侧边栏右侧光条 */
 .sidebar::before,
 .sidebar::after {
   display: none !important;
 }
 
-/* 2. 彻底去掉侧边栏菜单前的黑色圆点（加强版） */
+/* 2. 彻底移除侧边栏菜单黑点 */
 .sidebar .nav li,
 .sidebar .nav-list li,
 .nav li,
@@ -21,61 +21,65 @@
 }
 
 .sidebar .nav li::before,
-.sidebar .nav li:before,
 .sidebar .nav-list li::before,
-.sidebar .nav-list li:before,
 .nav li::before,
 .nav-list li::before,
 .nav-list li::marker {
   display: none !important;
-  content: none !important;
 }
 
-/* 3. 可选：把黑点改成清新小图标（比如小圆点或短横线） */
-.sidebar .nav li::before {
-  content: "•" !important;     /* 改成小圆点 */
-  color: #2c7a7b;              /* 清新青绿色 */
-  font-size: 18px;
-  margin-right: 8px;
-  vertical-align: middle;
+/* 3. 把 Recently Updated 和 Trending Tags 移动到右下角固定 */
+.recently-updated,
+.trending-tags,
+.widget.recent-posts,
+.widget.trending-tags {
+  position: fixed !important;
+  bottom: 20px !important;
+  right: 20px !important;
+  width: 280px !important;
+  background: rgba(255, 255, 255, 0.95) !important;
+  border-radius: 16px !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12) !important;
+  z-index: 100 !important;
+  padding: 16px !important;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(0, 0, 0, 0.08);
 }
 
-/* 如果你还是想完全去掉，就把上面那段 ::before 整个注释掉或删除 */
+/* 让两个板块上下排列 */
+.recently-updated {
+  bottom: 340px !important;   /* 调整位置，上面一个 */
+}
 
-/* ==================== 整体清新明亮样式 ==================== */
+.trending-tags {
+  bottom: 20px !important;    /* 下面一个 */
+}
+
+/* 标题样式优化（更清新） */
+.recently-updated h2,
+.trending-tags h2 {
+  color: #1e7a7a;
+  font-size: 1.1rem;
+  margin-bottom: 12px;
+}
+
+/* 卡片整体清新风格 */
+.post-preview,
+.widget {
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+}
+
 body {
   background-color: #f8f9fa !important;
 }
 
 #sidebar {
   background-color: #ffffff !important;
-  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.07) !important;
 }
 
-.post-preview {
-  background-color: #ffffff;
-  border-radius: 12px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
-}
-
-.post-preview:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-}
-
-.page-title, .post-title {
-  color: #1e7a7a !important;
-}
-
-a {
-  color: #1e7a7a;
-}
-
-a:hover {
-  color: #134f4f;
-}
-
-/* 加宽内容区域 */
+/* 加宽主要内容区域 */
 #main-wrapper > .container {
-  max-width: 1120px;
+  max-width: 1150px;
 }
