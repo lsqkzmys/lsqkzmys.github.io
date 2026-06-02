@@ -1,10 +1,43 @@
 /* =============================================
-   Chirpy 社区推荐常用样式微调
-   侧重：暗色模式对比度、排版节奏、卡片质感、轻微动效
+   Chirpy 社区推荐常用样式 + 全局背景图片与透明质感
+   适用：首页、文章列表、侧边栏、排版微调
    ============================================= */
 
-/* ---------- 1. 暗色模式下的文字对比度优化 ---------- */
-/* 让正文在深色背景下更易读，减少眼部疲劳 */
+/* ---------- 0. 全局背景图片 + 容器半透明（新增） ---------- */
+body {
+  background-image: url('/assets/img/avatar.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  /* 如果图片较暗，可加一层颜色叠加（半透明渐变）提升文字对比度 */
+}
+
+/* 主容器和侧边栏半透明，让背景透出 */
+#main-wrapper,
+#sidebar {
+  background-color: rgba(255, 255, 255, 0.82) !important;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* 暗色模式下的半透明背景 */
+html[data-mode="dark"] #main-wrapper,
+html[data-mode="dark"] #sidebar {
+  background-color: rgba(20, 20, 35, 0.8) !important;
+}
+
+/* 顶部导航栏也要半透明 */
+#topbar {
+  background-color: rgba(255, 255, 255, 0.75) !important;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+html[data-mode="dark"] #topbar {
+  background-color: rgba(15, 15, 25, 0.75) !important;
+}
+
+/* ---------- 1. 暗色模式文字对比度优化 ---------- */
 html[data-mode="dark"] body {
   color: #d1d5db;
 }
@@ -19,14 +52,13 @@ html[data-mode="dark"] .post-content h3 {
   color: #f9fafb;
 }
 
-/* 改善链接在暗色下的可见性 */
 html[data-mode="dark"] a:not(.post-tag):not(.btn) {
   color: #93c5fd;
   text-decoration: underline;
   text-underline-offset: 2px;
 }
 
-/* ---------- 2. 文章卡片质感提升（首页列表） ---------- */
+/* ---------- 2. 文章卡片质感（首页列表） ---------- */
 #post-list .post-preview {
   border-radius: 16px;
   padding: 1.8rem 1.5rem;
@@ -43,7 +75,6 @@ html[data-mode="dark"] a:not(.post-tag):not(.btn) {
   box-shadow: 0 10px 25px -8px rgba(0, 0, 0, 0.1);
 }
 
-/* 暗色模式下卡片背景微调 */
 html[data-mode="dark"] #post-list .post-preview {
   background: rgba(255, 255, 255, 0.03);
   border-color: rgba(255, 255, 255, 0.06);
@@ -66,7 +97,6 @@ html[data-mode="dark"] #post-list .post-preview:hover {
   font-size: 1.05rem;
 }
 
-/* 增加段落间距 */
 .post-content p {
   margin-bottom: 1.4rem;
 }
@@ -106,7 +136,6 @@ html[data-mode="dark"] #post-list .post-preview:hover {
   transform: translateY(-1px);
 }
 
-/* 暗色模式标签 */
 html[data-mode="dark"] .post-tags .post-tag {
   background: rgba(255, 255, 255, 0.1);
 }
@@ -127,14 +156,13 @@ html[data-mode="dark"] code {
   background: rgba(255, 255, 255, 0.1);
 }
 
-/* 代码块圆角 */
 div.highlighter-rouge,
 figure.highlight {
   border-radius: 12px;
   overflow: hidden;
 }
 
-/* ---------- 7. 滚动条柔和化（不刺眼） ---------- */
+/* ---------- 7. 滚动条柔和化 ---------- */
 ::-webkit-scrollbar {
   width: 8px;
 }
@@ -165,7 +193,7 @@ figure.highlight {
 
 /* ---------- 9. 表格与引用块 ---------- */
 blockquote {
-  border-left: 4px solid #6366f1; /* 靛蓝色强调 */
+  border-left: 4px solid #6366f1;
   background: rgba(99, 102, 241, 0.05);
   border-radius: 0 8px 8px 0;
   padding: 0.8rem 1.2rem;
@@ -176,7 +204,7 @@ table {
   overflow: hidden;
 }
 
-/* ---------- 10. 返回顶部按钮（如果有） ---------- */
+/* ---------- 10. 返回顶部按钮 ---------- */
 #back-to-top {
   border-radius: 50%;
   background: rgba(0, 0, 0, 0.7);
