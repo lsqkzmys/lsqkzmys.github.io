@@ -20,13 +20,13 @@ body {
   backdrop-filter: blur(18px) !important;
 }
 
-/* ==================== 彻底移除所有黑点 ==================== */
+/* ==================== 彻底移除黑点 ==================== */
 .nav-list li::before,
 nav li::before,
 .sidebar-bottom li::before,
 .social-links li::before,
-.icon-border,
-span.icon-border {
+span.icon-border,
+.icon-border {
   display: none !important;
   content: none !important;
   visibility: hidden !important;
@@ -35,11 +35,9 @@ span.icon-border {
 .sidebar-bottom li,
 .social-links li {
   list-style: none !important;
-  padding: 0 !important;
-  margin: 0 !important;
 }
 
-/* ==================== 社交图标横排优化 ==================== */
+/* ==================== 社交图标横排 ==================== */
 .sidebar-bottom,
 .sidebar-bottom.d-flex,
 .social-links {
@@ -48,48 +46,50 @@ span.icon-border {
   justify-content: center !important;
   gap: 14px !important;
   flex-wrap: wrap !important;
-  padding: 8px 0 !important;
 }
 
-/* ==================== 把两个板块合并成一个 ==================== */
+/* ==================== 合并两个板块 + 往上移动 ==================== */
 #access-lastmod,
 section#access-lastmod,
 .trending-tags,
 .access > section {
   position: fixed !important;
   right: 25px !important;
-  top: 130px !important;
+  top: 100px !important;           /* 往上移动了 */
   width: 340px !important;
   z-index: 9999 !important;
-  background: rgba(255, 255, 255, 0.92) !important;
+  background: rgba(255, 255, 255, 0.93) !important;
   border-radius: 18px !important;
   box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2) !important;
   padding: 0 !important;
   overflow: hidden;
   backdrop-filter: blur(12px);
+  max-height: 520px;               /* 增加高度防止覆盖 */
 }
 
-/* 内部两个区域的分割 */
+/* 内部标题分割线 */
 #access-lastmod h2,
 .trending-tags h2,
 .access section h2 {
   margin: 0;
-  padding: 18px 20px 12px;
-  background: rgba(0, 0, 0, 0.03);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  padding: 16px 20px 10px;
+  background: rgba(0, 0, 0, 0.04);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  font-size: 1.05rem;
 }
 
+/* 内容区域 */
 #access-lastmod .widget-content,
 .trending-tags .widget-content,
 .access section > div {
-  padding: 0 20px 18px;
+  padding: 8px 20px 20px;
 }
 
-/* Trending Tags 区域加分割线 */
+/* Trending Tags 标题加上分割线 */
 .trending-tags h2,
 .access > section:not(:first-child) h2 {
-  border-top: 1px solid rgba(0, 0, 0, 0.08);
-  margin-top: 8px;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  margin-top: 6px;
 }
 
 /* ==================== 动态效果 ==================== */
