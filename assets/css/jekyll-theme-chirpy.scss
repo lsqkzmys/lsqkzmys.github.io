@@ -3,18 +3,19 @@
 
 @import 'main';
 
-/* ==================== 背景图片 + 更高透明度 ==================== */
+/* ==================== 背景图片 + 透明度 ==================== */
 body {
   background: url('/assets/img/avatar.jpg') no-repeat center center fixed !important;
   background-size: cover !important;
   background-color: #e0e7f0 !important;
 }
 
-/* 主要内容和侧边栏增加透明度，让背景图透出来 */
+/* 增加透明度，让背景图更明显 */
 #main-wrapper,
 #sidebar,
-.panel-wrapper {
-  background: rgba(255, 255, 255, 0.78) !important;
+.panel-wrapper,
+.access {
+  background: rgba(255, 255, 255, 0.75) !important;
   backdrop-filter: blur(16px) !important;
 }
 
@@ -41,36 +42,55 @@ nav li::before,
   display: none !important;
 }
 
-/* ==================== Recently Updated & Trending Tags 移动到右侧 ==================== */
+/* ==================== Recently Updated & Trending Tags 移动 ==================== */
 #access-lastmod,
-section#access-lastmod,
-.trending-tags,
-.widget.trending-tags {
+section#access-lastmod {
   position: fixed !important;
   right: 30px !important;
+  top: 140px !important;
   width: 320px !important;
-  background: rgba(255, 255, 255, 0.85) !important;
+  background: rgba(255, 255, 255, 0.88) !important;
   border-radius: 18px !important;
   box-shadow: 0 12px 35px rgba(0, 0, 0, 0.18) !important;
   padding: 20px !important;
   z-index: 999 !important;
   backdrop-filter: blur(12px);
-  border: 1px solid rgba(255,255,255,0.7);
 }
 
-/* Recently Updated 位置 */
-#access-lastmod,
-section#access-lastmod {
-  top: 140px !important;
-}
-
-/* Trending Tags 位置（在下方） */
+/* Trending Tags */
 .trending-tags,
+section.trending-tags,
 .widget.trending-tags {
+  position: fixed !important;
+  right: 30px !important;
   top: 420px !important;
+  width: 320px !important;
+  background: rgba(255, 255, 255, 0.88) !important;
+  border-radius: 18px !important;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.18) !important;
+  padding: 20px !important;
+  z-index: 999 !important;
+  backdrop-filter: blur(12px);
 }
 
-/* ==================== 动态效果 + 清新风格 ==================== */
+/* ==================== 社交图标横排 ==================== */
+.sidebar-bottom .social-links,
+.sidebar-bottom .links,
+.social-links {
+  display: flex !important;
+  flex-direction: row !important;
+  justify-content: center !important;
+  gap: 16px !important;
+  flex-wrap: wrap !important;
+}
+
+.sidebar-bottom .social-links li,
+.social-links li {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* ==================== 动态效果 ==================== */
 .post-preview {
   transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
   border-radius: 16px;
@@ -82,22 +102,8 @@ section#access-lastmod {
   box-shadow: 0 25px 50px rgba(0, 0, 0, 0.18) !important;
 }
 
-a {
-  transition: all 0.3s ease;
-}
-
 a:hover {
-  transform: translateX(5px);
-  color: #1e7a7a !important;
-}
-
-/* 社交图标横排 */
-.social-links,
-.sidebar-bottom .social-links {
-  display: flex !important;
-  flex-direction: row !important;
-  justify-content: center !important;
-  gap: 18px !important;
+  transform: translateX(4px);
 }
 
 /* 加宽内容 */
