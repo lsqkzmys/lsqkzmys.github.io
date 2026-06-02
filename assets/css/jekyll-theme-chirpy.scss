@@ -3,236 +3,76 @@
 
 @import 'main';
 
-/* ==================== 你的自定义样式写在这里 ==================== */
-/* ===== 花里胡哨 Chirpy 首页样式 ===== */
+/* ==================== 清新明亮整体风格 + 指定修改 ==================== */
 
-/* ---------- 全局炸裂背景 ---------- */
-body {
-  background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
-  background-attachment: fixed;
-  color: #e0e0e0;
+/* 1. 去掉侧边栏右侧的两个透明光条（拨片） */
+.sidebar::before,
+.sidebar::after {
+  display: none !important;
 }
 
-/* 给主容器加一层半透明玻璃效果 */
-#main-wrapper,
+/* 2. 去掉侧边栏菜单前面的黑点（圆点） */
+.sidebar .nav li::before,
+.sidebar .nav li:before,
+.nav-list li::marker,
+.nav-list li:before {
+  display: none !important;
+}
+
+.sidebar .nav li {
+  padding-left: 0 !important;
+}
+
+/* 3. 清新明亮主色调调整（亮色为主） */
+body {
+  background-color: #f8f9fa !important;
+  color: #333 !important;
+}
+
 #sidebar {
-  background: rgba(20, 20, 40, 0.7) !important;
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border-radius: 24px;
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  box-shadow: 0 0 60px rgba(128, 0, 255, 0.3);
+  background-color: #ffffff !important;
+  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.08) !important;
 }
 
-/* ---------- 侧边栏头像：旋转 + 霓虹 ---------- */
-.avatar img {
-  border-radius: 50%;
-  border: 4px solid transparent;
-  background: linear-gradient(45deg, #ff006e, #8338ec, #3a86ff) border-box;
-  -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
-  mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-  animation: avatarGlow 3s linear infinite, avatarFloat 4s ease-in-out infinite;
-}
-
-@keyframes avatarGlow {
-  0% { filter: drop-shadow(0 0 8px #ff006e); }
-  33% { filter: drop-shadow(0 0 18px #8338ec); }
-  66% { filter: drop-shadow(0 0 12px #3a86ff); }
-  100% { filter: drop-shadow(0 0 8px #ff006e); }
-}
-
-@keyframes avatarFloat {
-  0%, 100% { transform: translateY(0) rotate(0deg); }
-  50% { transform: translateY(-8px) rotate(3deg); }
-}
-
-/* 侧边栏名字霓虹闪烁 */
-.site-title a {
-  font-weight: 900;
-  background: linear-gradient(to right, #f72585, #b5179e, #7209b7, #4361ee);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  animation: textShine 3s linear infinite;
-  background-size: 200% auto;
-}
-
-@keyframes textShine {
-  to { background-position: 200% center; }
-}
-
-/* 侧边栏社交图标动起来 */
-.sidebar .social-links a {
-  transition: 0.3s;
-}
-.sidebar .social-links a:hover {
-  transform: scale(1.4) rotate(15deg);
-  filter: drop-shadow(0 0 10px cyan);
-}
-
-/* ---------- 文章卡片：悬停爆炸 ---------- */
-#post-list .post-preview {
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 20px;
-  padding: 1.5rem;
-  margin-bottom: 2rem;
-  transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  position: relative;
-  overflow: hidden;
-}
-
-/* 流光边框动画 */
-#post-list .post-preview::before {
-  content: "";
-  position: absolute;
-  top: -2px; left: -2px; right: -2px; bottom: -2px;
-  background: linear-gradient(45deg, #ff006e, #3a86ff, #8338ec, #ffbe0b);
-  background-size: 400%;
-  z-index: -1;
-  border-radius: 22px;
-  animation: borderGlow 8s linear infinite;
-  opacity: 0;
-  transition: opacity 0.5s;
-}
-
-#post-list .post-preview:hover::before {
-  opacity: 1;
-}
-
-@keyframes borderGlow {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-#post-list .post-preview:hover {
-  transform: translateY(-8px) scale(1.02);
-  box-shadow: 0 20px 50px rgba(255, 0, 110, 0.5), 0 0 80px rgba(131, 56, 236, 0.4);
-}
-
-/* 标题颜色渐变 */
-.post-title a {
-  background: linear-gradient(135deg, #f72585, #b5179e);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  font-weight: 800;
-  transition: 0.3s;
-}
-.post-title a:hover {
-  background: linear-gradient(135deg, #ffbe0b, #fb5607);
-  -webkit-background-clip: text;
-  background-clip: text;
-}
-
-/* 文章摘要文字放大动效 */
-.post-content {
-  color: #ccc;
-  transition: 0.3s;
-}
-.post-preview:hover .post-content {
-  color: #fff;
-  text-shadow: 0 0 8px rgba(255,255,255,0.5);
-}
-
-/* 标签：泡泡糖风格 */
-.post-tags .post-tag {
-  background: linear-gradient(145deg, #8338ec, #3a86ff);
-  border: none;
-  border-radius: 30px;
-  padding: 0.2rem 1rem;
-  color: #fff;
-  font-weight: bold;
-  letter-spacing: 0.5px;
-  transition: 0.3s;
-}
-.post-tags .post-tag:hover {
-  transform: scale(1.2) rotate(-3deg);
-  box-shadow: 0 0 20px #8338ec;
-  background: linear-gradient(145deg, #ff006e, #8338ec);
-}
-
-/* 日期/阅读时间增加闪烁点 */
-.post-meta time,
-.post-meta .readtime {
-  position: relative;
-}
-.post-meta time::after {
-  content: "✨";
-  margin-left: 5px;
-  animation: sparkle 1s infinite;
-}
-
-@keyframes sparkle {
-  0%, 100% { opacity: 0; transform: scale(0.5); }
-  50% { opacity: 1; transform: scale(1.2); }
-}
-
-/* ---------- 分页按钮：像素风霓虹 ---------- */
-.pagination .page-link {
-  background: #1a1a2e;
-  border: 2px solid #7209b7;
-  color: #e0e0e0;
+/* 首页文章卡片更清新 */
+.post-preview {
+  background-color: #ffffff;
   border-radius: 12px;
-  transition: 0.3s;
-  text-shadow: 0 0 5px #b5179e;
-}
-.pagination .page-link:hover {
-  background: #7209b7;
-  color: #fff;
-  box-shadow: 0 0 30px #b5179e, inset 0 0 15px #f72585;
-  border-color: #f72585;
-  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  transition: all 0.3s ease;
 }
 
-/* ---------- 导航栏闪烁 ---------- */
-#topbar {
-  background: rgba(10, 10, 25, 0.8) !important;
-  backdrop-filter: blur(15px);
-  border-bottom: 2px solid;
-  border-image: linear-gradient(90deg, #ff006e, #3a86ff, #8338ec) 1;
-  animation: navPulse 4s infinite alternate;
+.post-preview:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
 }
 
-@keyframes navPulse {
-  0% { box-shadow: 0 0 20px #ff006e; }
-  100% { box-shadow: 0 0 40px #3a86ff; }
+/* 文章标题更醒目清新 */
+.page-title,
+.post-title {
+  color: #2c7a7b !important;   /* 清新青绿色调 */
 }
 
-/* 搜索框发光 */
-#search-input {
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid #b5179e;
-  border-radius: 30px;
-  color: #fff;
-  transition: 0.3s;
-}
-#search-input:focus {
-  box-shadow: 0 0 25px #f72585;
-  border-color: #f72585;
-  background: rgba(255, 255, 255, 0.2);
+/* 链接颜色更明亮 */
+a {
+  color: #2c7a7b;
 }
 
-/* ---------- 滚动条彩虹 ---------- */
-::-webkit-scrollbar {
-  width: 10px;
-}
-::-webkit-scrollbar-track {
-  background: #0f0c29;
-}
-::-webkit-scrollbar-thumb {
-  background: linear-gradient(#ff006e, #8338ec, #3a86ff);
-  border-radius: 10px;
+a:hover {
+  color: #1d5c5e;
 }
 
-/* ---------- 鼠标指针自定义（可选） ---------- */
-body {
-  cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20'><circle cx='10' cy='10' r='8' fill='none' stroke='%23ff006e' stroke-width='2'/></svg>") 10 10, auto;
+/* 顶部导航和按钮更干净 */
+.btn {
+  border-radius: 8px;
 }
-a, button {
-  cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24'><circle cx='12' cy='12' r='10' fill='%23b5179e' opacity='0.6' stroke='%23f72585' stroke-width='2'/></svg>") 12 12, pointer;
+
+/* 首页 Hero 区域更明亮 */
+.hero {
+  background: linear-gradient(135deg, #e6f3ff, #f0f9ff) !important;
+}
+
+/* 加宽内容区域（可选，更清爽） */
+#main-wrapper > .container {
+  max-width: 1100px;
 }
