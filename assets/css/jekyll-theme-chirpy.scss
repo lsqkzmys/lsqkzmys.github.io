@@ -4,5 +4,154 @@
 @import 'main';
 
 /* ==================== 你的自定义样式写在这里 ==================== */
+// 1. 全局基础优化
+:root {
+  --sidebar-width: 260px;
+  --main-bg-color: #f8f9fa;
+  --card-bg-color: #ffffff;
+  --text-color: #333;
+  --primary-color: #4285f4;
+  --hover-color: #3367d6;
+  --border-radius: 12px;
+  --box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+}
 
+@media (prefers-color-scheme: dark) {
+  :root {
+    --main-bg-color: #1a1a1a;
+    --card-bg-color: #2d2d2d;
+    --text-color: #e0e0e0;
+    --box-shadow: 0 2px 12px rgba(0,0,0,0.2);
+  }
+}
+
+body {
+  background-color: var(--main-bg-color);
+  color: var(--text-color);
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  line-height: 1.65;
+}
+
+// 2. 侧边栏美化
+#sidebar {
+  background: var(--card-bg-color);
+  box-shadow: var(--box-shadow);
+  border-right: 1px solid rgba(0,0,0,0.05);
+}
+
+@media (prefers-color-scheme: dark) {
+  #sidebar {
+    border-right-color: rgba(255,255,255,0.05);
+  }
+}
+
+.sidebar-header .avatar {
+  border-radius: 50%;
+  border: 3px solid var(--primary-color);
+  box-shadow: 0 0 10px rgba(66, 133, 244, 0.3);
+}
+
+.sidebar-header .site-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--primary-color);
+}
+
+.sidebar-header .site-desc {
+  color: #888;
+  font-size: 0.95rem;
+}
+
+.nav-item {
+  margin: 4px 0;
+  border-radius: 8px;
+  transition: all 0.25s ease;
+}
+
+.nav-item.active {
+  background: linear-gradient(90deg, var(--primary-color), #673ab7);
+  color: white;
+  box-shadow: 0 2px 8px rgba(66, 133, 244, 0.3);
+}
+
+.nav-item:hover:not(.active) {
+  background-color: rgba(66, 133, 244, 0.1);
+}
+
+// 3. 主内容区优化
+#main-wrapper {
+  padding: 2rem 3rem;
+}
+
+@media (max-width: 768px) {
+  #main-wrapper {
+    padding: 1.5rem;
+  }
+}
+
+.main-content {
+  background: var(--card-bg-color);
+  border-radius: var(--border-radius);
+  padding: 2rem;
+  box-shadow: var(--box-shadow);
+}
+
+// 4. 搜索框美化
+.search-input {
+  border-radius: 20px;
+  border: 1px solid #eee;
+  padding: 8px 16px 8px 36px;
+  background: var(--card-bg-color);
+  transition: all 0.25s ease;
+}
+
+.search-input:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(66, 133, 244, 0.2);
+  outline: none;
+}
+
+// 5. 页脚美化
+.footer {
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(0,0,0,0.05);
+  color: #999;
+  font-size: 0.9rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  .footer {
+    border-top-color: rgba(255,255,255,0.05);
+  }
+}
+
+// 6. 卡片/文章项美化（适配 Chirpy 的文章列表）
+.post-preview {
+  background: var(--card-bg-color);
+  border-radius: var(--border-radius);
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  box-shadow: var(--box-shadow);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.post-preview:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+}
+
+.post-title {
+  color: var(--primary-color);
+  font-weight: 600;
+}
+
+// 7. 深色模式适配
+@media (prefers-color-scheme: dark) {
+  .search-input {
+    border-color: #3a3a3a;
+    background: #2d2d2d;
+    color: #e0e0e0;
+  }
+}
 
