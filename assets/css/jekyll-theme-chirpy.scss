@@ -20,78 +20,76 @@ body {
   backdrop-filter: blur(18px) !important;
 }
 
-/* ==================== 侧边栏清理 ==================== */
-/* 移除所有黑点 */
-.sidebar .nav-list li,
-.nav-list li,
-nav li,
+/* ==================== 彻底移除所有黑点 ==================== */
+.nav-list li::before,
+nav li::before,
+.sidebar-bottom li::before,
+.social-links li::before,
+.icon-border,
+span.icon-border {
+  display: none !important;
+  content: none !important;
+  visibility: hidden !important;
+}
+
 .sidebar-bottom li,
 .social-links li {
   list-style: none !important;
-  padding-left: 0 !important;
+  padding: 0 !important;
+  margin: 0 !important;
 }
 
-.sidebar .nav-list li::before,
-.nav-list li::before,
-nav li::before,
-.social-links li::before,
-.social-links li::marker {
-  display: none !important;
-  content: none !important;
-}
-
-/* 移除右侧光条 */
-.sidebar::before,
-.sidebar::after {
-  display: none !important;
-}
-
-/* ==================== Recently Updated & Trending Tags ==================== */
-#access-lastmod,
-section#access-lastmod {
-  position: fixed !important;
-  right: 25px !important;
-  top: 130px !important;
-  width: 320px !important;
-  z-index: 9999 !important;
-  background: rgba(255, 255, 255, 0.9) !important;
-  border-radius: 18px !important;
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2) !important;
-  padding: 20px !important;
-}
-
-.trending-tags,
-section.trending-tags,
-.access > section:not(#access-lastmod) {
-  position: fixed !important;
-  right: 25px !important;
-  top: 410px !important;
-  width: 320px !important;
-  z-index: 9999 !important;
-  background: rgba(255, 255, 255, 0.9) !important;
-  border-radius: 18px !important;
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2) !important;
-  padding: 20px !important;
-}
-
-/* ==================== 社交图标横排 + 彻底清理黑点 ==================== */
+/* ==================== 社交图标横排优化 ==================== */
 .sidebar-bottom,
 .sidebar-bottom.d-flex,
 .social-links {
   display: flex !important;
   flex-direction: row !important;
   justify-content: center !important;
-  gap: 12px !important;
+  gap: 14px !important;
   flex-wrap: wrap !important;
-  padding: 0 !important;
-  margin: 10px 0 !important;
+  padding: 8px 0 !important;
 }
 
-.sidebar-bottom li,
-.social-links li {
-  margin: 0 !important;
+/* ==================== 把两个板块合并成一个 ==================== */
+#access-lastmod,
+section#access-lastmod,
+.trending-tags,
+.access > section {
+  position: fixed !important;
+  right: 25px !important;
+  top: 130px !important;
+  width: 340px !important;
+  z-index: 9999 !important;
+  background: rgba(255, 255, 255, 0.92) !important;
+  border-radius: 18px !important;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2) !important;
   padding: 0 !important;
-  list-style: none !important;
+  overflow: hidden;
+  backdrop-filter: blur(12px);
+}
+
+/* 内部两个区域的分割 */
+#access-lastmod h2,
+.trending-tags h2,
+.access section h2 {
+  margin: 0;
+  padding: 18px 20px 12px;
+  background: rgba(0, 0, 0, 0.03);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+#access-lastmod .widget-content,
+.trending-tags .widget-content,
+.access section > div {
+  padding: 0 20px 18px;
+}
+
+/* Trending Tags 区域加分割线 */
+.trending-tags h2,
+.access > section:not(:first-child) h2 {
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  margin-top: 8px;
 }
 
 /* ==================== 动态效果 ==================== */
