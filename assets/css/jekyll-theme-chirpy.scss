@@ -10,7 +10,7 @@ body {
   background-color: #e0e7f0 !important;
 }
 
-/* 主要区域增加透明度，让背景图透出来 */
+/* 主要区域透明度 */
 #main-wrapper,
 #sidebar,
 .panel-wrapper,
@@ -21,16 +21,23 @@ body {
 }
 
 /* ==================== 侧边栏清理 ==================== */
+/* 移除所有黑点 */
 .sidebar .nav-list li,
 .nav-list li,
-nav li {
+nav li,
+.sidebar-bottom li,
+.social-links li {
   list-style: none !important;
+  padding-left: 0 !important;
 }
 
 .sidebar .nav-list li::before,
 .nav-list li::before,
-nav li::before {
+nav li::before,
+.social-links li::before,
+.social-links li::marker {
   display: none !important;
+  content: none !important;
 }
 
 /* 移除右侧光条 */
@@ -39,7 +46,7 @@ nav li::before {
   display: none !important;
 }
 
-/* ==================== Recently Updated 移动到右侧 ==================== */
+/* ==================== Recently Updated & Trending Tags ==================== */
 #access-lastmod,
 section#access-lastmod {
   position: fixed !important;
@@ -51,13 +58,10 @@ section#access-lastmod {
   border-radius: 18px !important;
   box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2) !important;
   padding: 20px !important;
-  backdrop-filter: blur(12px) !important;
 }
 
-/* ==================== Trending Tags 移动到右侧 ==================== */
-section:has(h2:contains("Trending Tags")),
 .trending-tags,
-.widget.trending-tags,
+section.trending-tags,
 .access > section:not(#access-lastmod) {
   position: fixed !important;
   right: 25px !important;
@@ -68,29 +72,31 @@ section:has(h2:contains("Trending Tags")),
   border-radius: 18px !important;
   box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2) !important;
   padding: 20px !important;
-  backdrop-filter: blur(12px) !important;
 }
 
-/* ==================== 社交图标横排 ==================== */
+/* ==================== 社交图标横排 + 彻底清理黑点 ==================== */
 .sidebar-bottom,
 .sidebar-bottom.d-flex,
-.sidebar-bottom .d-flex {
+.social-links {
   display: flex !important;
   flex-direction: row !important;
   justify-content: center !important;
-  gap: 16px !important;
+  gap: 12px !important;
   flex-wrap: wrap !important;
+  padding: 0 !important;
+  margin: 10px 0 !important;
 }
 
-.sidebar-bottom a,
-.social-links a {
+.sidebar-bottom li,
+.social-links li {
   margin: 0 !important;
+  padding: 0 !important;
+  list-style: none !important;
 }
 
 /* ==================== 动态效果 ==================== */
 .post-preview:hover {
   transform: translateY(-12px) scale(1.03) !important;
-  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2) !important;
 }
 
 a:hover {
