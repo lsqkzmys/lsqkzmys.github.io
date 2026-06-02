@@ -3,91 +3,126 @@
 
 @import 'main';
 
-/* ==================== 清新明亮风格 ==================== */
+/* ==================== 整体背景图片 ==================== */
+body {
+  background: url('/assets/img/avatar.jpg') no-repeat center center fixed !important;
+  background-size: cover !important;
+  background-color: #f0f4f8 !important; /* 备用颜色 */
+}
 
-/* 1. 移除侧边栏右侧光条 */
+/* 让主要内容区域带半透明遮罩，更清晰 */
+#main-wrapper,
+#sidebar {
+  background: rgba(255, 255, 255, 0.92) !important;
+  backdrop-filter: blur(12px);
+}
+
+/* ==================== 清新明亮 + 动态效果 ==================== */
+
+/* 彻底移除侧边栏黑点 */
+.sidebar .nav-list li,
+.sidebar .nav li,
+.nav-list li,
+.nav li {
+  list-style: none !important;
+  padding-left: 8px !important;
+}
+
+.sidebar .nav-list li::before,
+.sidebar .nav li::before,
+.nav-list li::before,
+.nav li::before,
+.nav-list li::marker {
+  display: none !important;
+  content: none !important;
+}
+
+/* 移除侧边栏右侧光条 */
 .sidebar::before,
 .sidebar::after {
   display: none !important;
 }
 
-/* 2. 彻底移除侧边栏黑点 */
-.sidebar .nav li,
-.sidebar .nav-list li {
-  list-style: none !important;
-  padding-left: 8px !important;
-}
-
-.sidebar .nav li::before,
-.sidebar .nav-list li::before,
-.nav-list li::marker {
-  display: none !important;
-}
-
-/* 3. Recently Updated 和 Trending Tags 移到右侧（改进版） */
+/* Recently Updated 和 Trending Tags 移到右侧固定 */
 .widget.recent-posts,
 .widget.trending-tags,
 .recently-updated,
 .trending-tags {
-  position: absolute !important;
-  right: 20px !important;
-  top: 180px !important;           /* 调整这个数值可上下移动 */
+  position: fixed !important;
+  right: 25px !important;
   width: 300px !important;
-  background: rgba(255, 255, 255, 0.96) !important;
+  background: rgba(255, 255, 255, 0.95) !important;
   border-radius: 16px !important;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1) !important;
-  padding: 18px 16px !important;
-  z-index: 10;
-  border: 1px solid rgba(0,0,0,0.06);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15) !important;
+  padding: 18px !important;
+  z-index: 999 !important;
+  border: 1px solid rgba(255,255,255,0.6);
+  backdrop-filter: blur(10px);
 }
 
-/* Trending Tags 放在 Recently Updated 下面 */
+.widget.recent-posts,
+.recently-updated {
+  top: 160px !important;
+}
+
 .widget.trending-tags,
 .trending-tags {
-  top: 480px !important;   /* 根据需要调整间距 */
+  top: 460px !important;
 }
 
-/* 4. 底部四个分享图标横向排列 */
-.sidebar .social-links,
-.site-footer .social-links,
-.social-icons,
-.links ul {
+/* 底部社交图标横排 */
+.social-links,
+.site-footer .social-links {
   display: flex !important;
   flex-direction: row !important;
   justify-content: center !important;
-  gap: 12px !important;
-  margin-top: 15px !important;
+  gap: 16px !important;
 }
 
-.sidebar .social-links li,
-.social-links a {
+.social-links li {
   margin: 0 !important;
 }
 
-/* ==================== 整体清新明亮 ==================== */
-body {
-  background-color: #f8f9fa !important;
+/* ==================== 更多动态效果 ==================== */
+.post-preview {
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  border-radius: 16px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08) !important;
+}
+
+.post-preview:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15) !important;
 }
 
 #sidebar {
-  background-color: #ffffff !important;
-  box-shadow: 2px 0 12px rgba(0, 0, 0, 0.08) !important;
+  transition: all 0.3s ease;
 }
 
-.post-preview {
-  background-color: #ffffff;
-  border-radius: 12px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
-}
-
-.page-title, .post-title {
-  color: #1e7a7a !important;
+#sidebar:hover {
+  box-shadow: 4px 0 20px rgba(0, 0, 0, 0.12) !important;
 }
 
 a {
-  color: #1e7a7a;
+  transition: all 0.25s ease;
 }
 
+a:hover {
+  color: #1e7a7a !important;
+  transform: translateX(4px);
+}
+
+/* 卡片标题动画 */
+.page-title, .post-title {
+  transition: all 0.3s ease;
+}
+
+.page-title:hover, .post-title:hover {
+  color: #134f4f !important;
+  letter-spacing: 0.5px;
+}
+
+/* 加宽内容区域 */
 #main-wrapper > .container {
-  max-width: 1150px;
+  max-width: 1180px !important;
 }
