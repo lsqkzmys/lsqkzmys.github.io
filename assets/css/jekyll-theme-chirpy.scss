@@ -3,76 +3,79 @@
 
 @import 'main';
 
-/* ==================== 清新明亮整体风格 + 指定修改 ==================== */
+/* ==================== 清新明亮风格 + 彻底移除黑点 ==================== */
 
-/* 1. 去掉侧边栏右侧的两个透明光条（拨片） */
+/* 1. 彻底移除侧边栏右侧透明光条 */
 .sidebar::before,
 .sidebar::after {
   display: none !important;
 }
 
-/* 2. 去掉侧边栏菜单前面的黑点（圆点） */
+/* 2. 彻底去掉侧边栏菜单前的黑色圆点（加强版） */
+.sidebar .nav li,
+.sidebar .nav-list li,
+.nav li,
+.nav-list li {
+  list-style: none !important;
+  padding-left: 8px !important;
+}
+
 .sidebar .nav li::before,
 .sidebar .nav li:before,
-.nav-list li::marker,
-.nav-list li:before {
+.sidebar .nav-list li::before,
+.sidebar .nav-list li:before,
+.nav li::before,
+.nav-list li::before,
+.nav-list li::marker {
   display: none !important;
+  content: none !important;
 }
 
-.sidebar .nav li {
-  padding-left: 0 !important;
+/* 3. 可选：把黑点改成清新小图标（比如小圆点或短横线） */
+.sidebar .nav li::before {
+  content: "•" !important;     /* 改成小圆点 */
+  color: #2c7a7b;              /* 清新青绿色 */
+  font-size: 18px;
+  margin-right: 8px;
+  vertical-align: middle;
 }
 
-/* 3. 清新明亮主色调调整（亮色为主） */
+/* 如果你还是想完全去掉，就把上面那段 ::before 整个注释掉或删除 */
+
+/* ==================== 整体清新明亮样式 ==================== */
 body {
   background-color: #f8f9fa !important;
-  color: #333 !important;
 }
 
 #sidebar {
   background-color: #ffffff !important;
-  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.08) !important;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.07) !important;
 }
 
-/* 首页文章卡片更清新 */
 .post-preview {
   background-color: #ffffff;
   border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
-  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
 }
 
 .post-preview:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
 }
 
-/* 文章标题更醒目清新 */
-.page-title,
-.post-title {
-  color: #2c7a7b !important;   /* 清新青绿色调 */
+.page-title, .post-title {
+  color: #1e7a7a !important;
 }
 
-/* 链接颜色更明亮 */
 a {
-  color: #2c7a7b;
+  color: #1e7a7a;
 }
 
 a:hover {
-  color: #1d5c5e;
+  color: #134f4f;
 }
 
-/* 顶部导航和按钮更干净 */
-.btn {
-  border-radius: 8px;
-}
-
-/* 首页 Hero 区域更明亮 */
-.hero {
-  background: linear-gradient(135deg, #e6f3ff, #f0f9ff) !important;
-}
-
-/* 加宽内容区域（可选，更清爽） */
+/* 加宽内容区域 */
 #main-wrapper > .container {
-  max-width: 1100px;
+  max-width: 1120px;
 }
