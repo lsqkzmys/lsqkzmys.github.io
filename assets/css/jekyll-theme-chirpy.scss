@@ -262,3 +262,12 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background: linear-gradient(180deg, var(--primary-dark), var(--primary));
 }
+
+/* 清除侧边导航列表圆点 */
+#sidebar .nav-list {
+  list-style: none !important;
+  padding-left: 0 !important;
+}
+#sidebar .nav-list > li {
+  list-style-type: none !important;
+}
