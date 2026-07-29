@@ -1,8 +1,8 @@
 ---
-title: "capability权限认知"
-date: 2025-10-28 09:23:10
-categories: [知识仓库]
-tags: [capability]
+title: "capability权限认知(getcap)"
+date: 2025-3-28 09:23:10
+categories: [知识仓库,Linux]
+tags: [capability,setcap,getcap]
 ---
 
 ### capability权限是什么
